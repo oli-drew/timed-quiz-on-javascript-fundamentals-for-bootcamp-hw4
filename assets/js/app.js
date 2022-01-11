@@ -7,18 +7,11 @@ const timerEl = document.querySelector("#timer");
 // Timer function
 const countdownTimer = (duration, element) => {
   timeRemaining = duration;
-  //   let minutes;
-  //   let seconds;
   const timerInterval = setInterval(() => {
     // Create minutes and seconds
-    // minutes = parseInt(timeRemaining / 60, 10);
-    // seconds = parseInt(timeRemaining % 60, 10);
-    // //
-    // minutes = minutes < 10 ? "0" + minutes : minutes;
-    // seconds = seconds < 10 ? "0" + seconds : seconds;
-    // Display the timer
-    // element.textContent = minutes + ":" + seconds;
-    element.textContent = timeRemaining;
+    element.textContent = new Date(timeRemaining * 1000)
+      .toISOString()
+      .substr(14, 5);
     // Decrement timer
     timeRemaining--;
     // When timer reaches 0
