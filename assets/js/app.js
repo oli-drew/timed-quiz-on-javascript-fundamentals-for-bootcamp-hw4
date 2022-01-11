@@ -1,36 +1,45 @@
-console.log("File linked!");
-
+"use strict";
 // Timer - 5 minutes = 300 secs
 const timerStart = 30;
+let timeRemaining;
 // Timer element
 const timerEl = document.querySelector("#timer");
 // Timer function
 const countdownTimer = (duration, element) => {
-  let timer = duration;
-  let minutes;
-  let seconds;
-  setInterval(function () {
+  timeRemaining = duration;
+  //   let minutes;
+  //   let seconds;
+  const timerInterval = setInterval(() => {
     // Create minutes and seconds
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-    //
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    // minutes = parseInt(timeRemaining / 60, 10);
+    // seconds = parseInt(timeRemaining % 60, 10);
+    // //
+    // minutes = minutes < 10 ? "0" + minutes : minutes;
+    // seconds = seconds < 10 ? "0" + seconds : seconds;
     // Display the timer
-    element.textContent = minutes + ":" + seconds;
+    // element.textContent = minutes + ":" + seconds;
+    element.textContent = timeRemaining;
     // Decrement timer
-    timer--;
+    timeRemaining--;
     // When timer reaches 0
-    if (timer < 0) {
+    if (timeRemaining < 0) {
       element.textContent = "Times up!";
+      clearInterval(timerInterval);
+      gameOver();
     }
   }, 1000);
 };
 
-countdownTimer(timerStart, timerEl);
+// Start button clicked function
+const startQuiz = () => {
+  console.log("Start Quiz");
+  //   Start timer
+  countdownTimer(timerStart, timerEl);
+};
 
-// Button to start the quiz
+// Button to start the quiz and click event listener
 const startBtn = document.querySelector("#startBtn");
+startBtn.addEventListener("click", startQuiz);
 
 // Local storage for leader board
 
@@ -50,17 +59,35 @@ const correctAnswer = () => {
 // Incorrect answer = time subtracted from timer (20s)
 const incorrectAnswer = () => {
   //
+  //   Remove 20 secs from timer
+  timeRemaining = timeRemaining - 20;
 };
 
 // Game finishes when all questions answered or timer = 0
 const gameOver = () => {
   //
+  console.log("Game Over!");
 };
 
 // User is presented with their score
 
 // User can enter initials into form to save score to leader board
-const submitScore = () => {};
+const submitScore = (e) => {
+  // Prevent form submit default action
+  e.preventDefault();
+  console.log("Score submitted");
+};
 
 // Submit score button
 const submitScoreBtn = document.querySelector("#submitScore");
+submitScoreBtn.addEventListener("click", submitScore);
+
+// Function to hide page element
+const hideElement = (element) => {
+  element.style.display = "none";
+};
+
+// Function to show page element
+const showElement = (element) => {
+  element.style.display = "block";
+};
