@@ -173,20 +173,25 @@ optionButtons.forEach((btn) => {
   });
 });
 
-// btn.getAttribute("data-answer")
-
 // Correct answer = next question
 const correctAnswer = () => {
   console.log("Correct");
   // If question number is less than the total number of questions go to next
   if (questionNumber < totalQuestions) {
     console.log("Next question");
+    // Increment score
+    currentScore++;
+    console.log(currentScore);
     // Increase question number
     questionNumber++;
     // Get next question
     getQuestion();
   } else {
-    console.log("game over");
+    // Add to score for last question
+    currentScore++;
+    console.log(currentScore);
+    // Finish game
+    gameOver();
   }
 };
 
