@@ -132,6 +132,11 @@ const startQuiz = () => {
 // Show question function
 const getQuestion = (questionNumber) => {
   // Change dom elements with question and options
+  questionElement.textContent = questions[questionNumber].question;
+  optionOneBtn.textContent = questions[questionNumber].a;
+  optionTwoBtn.textContent = questions[questionNumber].b;
+  optionThreeBtn.textContent = questions[questionNumber].c;
+  optionFourBtn.textContent = questions[questionNumber].d;
 };
 
 // Button to start the quiz and click event listener
