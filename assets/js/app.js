@@ -84,7 +84,7 @@ const questions = [
 ];
 
 // Total number of questions
-const totalQuestions = questions.length;
+const totalQuestions = questions.length - 1;
 
 // Variable to store current score
 let currentScore = 0;
@@ -120,6 +120,7 @@ const countdownTimer = (duration, element) => {
     if (timeRemaining < 0) {
       element.textContent = "Times up!";
       clearInterval(timerInterval);
+      // Finish game when timer reaches 0
       gameOver();
     }
   }, 1000);
@@ -130,6 +131,8 @@ const startQuiz = () => {
   console.log("Start Quiz");
   //   Start timer
   countdownTimer(timerStart, timerEl);
+  // Get the first question
+  getQuestion();
 };
 
 // Button to start the quiz and click event listener
@@ -137,7 +140,7 @@ const startBtn = document.querySelector("#startBtn");
 startBtn.addEventListener("click", startQuiz);
 
 // Show question function
-const getQuestion = (questionNumber) => {
+const getQuestion = () => {
   // Change dom elements with question and options
   questionElement.textContent = questions[questionNumber].question;
   optionOneBtn.textContent = questions[questionNumber].a;
@@ -147,25 +150,34 @@ const getQuestion = (questionNumber) => {
 };
 
 // Check Answer
-const checkAnswer = (answer, questionNumber) => {
+const checkAnswer = (answer) => {
   // Check if the submitted answer was correct
   if (answer === questions[questionNumber].correct) {
-    console.log("correct");
     correctAnswer();
   } else {
-    console.log("Wrong");
     incorrectAnswer();
   }
 };
 
 // Correct answer = next question
 const correctAnswer = () => {
+  console.log("Correct");
   // If question number is less than the total number of questions go to next
+  if (questionNumber < totalQuestions) {
+    console.log("Next question");
+    // Increase question number
+    questionNumber++;
+    // Get next question
+    getQuestion();
+  } else {
+    console.log("game over");
+  }
 };
 
 // Incorrect answer = time subtracted from timer (20s)
 const incorrectAnswer = () => {
   //
+  console.log("Wrong");
   //   Remove 20 secs from timer
   timeRemaining = timeRemaining - 20;
 };
