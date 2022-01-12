@@ -35,9 +35,27 @@ const startBtn = document.querySelector("#startBtn");
 startBtn.addEventListener("click", startQuiz);
 
 // Local storage for leader board
+// ->
 
 // 10 Questions - multiple choice - 4 answers - JS object
-const questions = {};
+const questions = [
+  {
+    question: "Q1: Question One?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    ans: "a",
+  },
+  {
+    question: "Q4: Question Two?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    ans: "b",
+  },
+];
 
 // Check Answer
 const checkAnswer = () => {
