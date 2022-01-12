@@ -83,6 +83,9 @@ const questions = [
   },
 ];
 
+// Total number of questions
+const totalQuestions = questions.length;
+
 // Variable to store current score
 let currentScore = 0;
 
@@ -129,6 +132,10 @@ const startQuiz = () => {
   countdownTimer(timerStart, timerEl);
 };
 
+// Button to start the quiz and click event listener
+const startBtn = document.querySelector("#startBtn");
+startBtn.addEventListener("click", startQuiz);
+
 // Show question function
 const getQuestion = (questionNumber) => {
   // Change dom elements with question and options
@@ -139,23 +146,21 @@ const getQuestion = (questionNumber) => {
   optionFourBtn.textContent = questions[questionNumber].d;
 };
 
-// Button to start the quiz and click event listener
-const startBtn = document.querySelector("#startBtn");
-startBtn.addEventListener("click", startQuiz);
-
-// Local storage for leader board
-// -> JSON object to store scores
-// // -> convert to string to save to local storage
-// // // ->
-
 // Check Answer
-const checkAnswer = () => {
-  //
+const checkAnswer = (answer, questionNumber) => {
+  // Check if the submitted answer was correct
+  if (answer === questions[questionNumber].correct) {
+    console.log("correct");
+    correctAnswer();
+  } else {
+    console.log("Wrong");
+    incorrectAnswer();
+  }
 };
 
 // Correct answer = next question
 const correctAnswer = () => {
-  //
+  // If question number is less than the total number of questions go to next
 };
 
 // Incorrect answer = time subtracted from timer (20s)
@@ -193,3 +198,8 @@ const hideElement = (element) => {
 const showElement = (element) => {
   element.style.display = "block";
 };
+
+// Local storage for leader board
+// -> JSON object to store scores
+// // -> convert to string to save to local storage
+// // // ->
