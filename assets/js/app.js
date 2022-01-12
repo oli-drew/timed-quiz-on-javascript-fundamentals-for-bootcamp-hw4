@@ -140,7 +140,8 @@ startBtn.addEventListener("click", startQuiz);
 const getQuestion = () => {
   // Change dom element with question
   questionElement.textContent = questions[questionNumber].question;
-  //
+
+  // --- Might use a loop for this later --
   // optionButtons.forEach((btn) => {
   //   btn.textContent = questions[questionNumber].b;
   // });
@@ -161,6 +162,18 @@ const checkAnswer = (answer) => {
     incorrectAnswer();
   }
 };
+
+// Assign event listener to buttons
+optionButtons.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    // console.log(event.target.getAttribute("data-answer"));
+    let userAnswer = event.target.getAttribute("data-answer");
+    console.log(userAnswer);
+    checkAnswer(userAnswer);
+  });
+});
+
+// btn.getAttribute("data-answer")
 
 // Correct answer = next question
 const correctAnswer = () => {
@@ -190,11 +203,6 @@ const gameOver = () => {
   //
   console.log("Game Over!");
 };
-
-//
-// optionButtons.forEach((btn) => {
-//   btn.addEventListener("click", checkAnswer(btn.getAttribute("data-answer")));
-// });
 
 // User is presented with their score
 
