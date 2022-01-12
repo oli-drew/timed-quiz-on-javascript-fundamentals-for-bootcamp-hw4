@@ -1,4 +1,88 @@
 "use strict";
+// 10 Questions - multiple choice - 4 answers - JS object
+const questions = [
+  {
+    question: "Q1: Question One?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "a",
+  },
+  {
+    question: "Q2: Question Two?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "b",
+  },
+  {
+    question: "Q3: Question Three?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "a",
+  },
+  {
+    question: "Q4: Question Four?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "d",
+  },
+  {
+    question: "Q5: Question Five?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "c",
+  },
+  {
+    question: "Q6: Question Six?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "b",
+  },
+  {
+    question: "Q7: Question Seven?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "d",
+  },
+  {
+    question: "Q8: Question Eight?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "d",
+  },
+  {
+    question: "Q9: Question Nine?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "b",
+  },
+  {
+    question: "Q10: Question Ten?",
+    a: "Answer 1",
+    b: "Answer 2",
+    c: "Answer 3",
+    d: "Answer 4",
+    correct: "c",
+  },
+];
+
 // Timer - 5 minutes = 300 secs
 const timerStart = 30;
 let timeRemaining;
@@ -35,27 +119,9 @@ const startBtn = document.querySelector("#startBtn");
 startBtn.addEventListener("click", startQuiz);
 
 // Local storage for leader board
-// ->
-
-// 10 Questions - multiple choice - 4 answers - JS object
-const questions = [
-  {
-    question: "Q1: Question One?",
-    a: "Answer 1",
-    b: "Answer 2",
-    c: "Answer 3",
-    d: "Answer 4",
-    ans: "a",
-  },
-  {
-    question: "Q4: Question Two?",
-    a: "Answer 1",
-    b: "Answer 2",
-    c: "Answer 3",
-    d: "Answer 4",
-    ans: "b",
-  },
-];
+// -> JSON object to store scores
+// // -> convert to string to save to local storage
+// // // ->
 
 // Check Answer
 const checkAnswer = () => {
