@@ -96,10 +96,7 @@ let questionNumber = 0;
 const questionElement = document.querySelector("#question");
 
 // Question options
-const optionOneBtn = document.querySelector("#optionOne");
-const optionTwoBtn = document.querySelector("#optionTwo");
-const optionThreeBtn = document.querySelector("#optionThree");
-const optionFourBtn = document.querySelector("#optionFour");
+const optionButtons = document.querySelectorAll("#optionBtn");
 
 // Timer - 5 minutes = 300 secs
 const timerStart = 300;
@@ -141,12 +138,18 @@ startBtn.addEventListener("click", startQuiz);
 
 // Show question function
 const getQuestion = () => {
-  // Change dom elements with question and options
+  // Change dom element with question
   questionElement.textContent = questions[questionNumber].question;
-  optionOneBtn.textContent = questions[questionNumber].a;
-  optionTwoBtn.textContent = questions[questionNumber].b;
-  optionThreeBtn.textContent = questions[questionNumber].c;
-  optionFourBtn.textContent = questions[questionNumber].d;
+  //
+  // optionButtons.forEach((btn) => {
+  //   btn.textContent = questions[questionNumber].b;
+  // });
+
+  // Change dom element text with options
+  optionBtn[0].textContent = questions[questionNumber].a;
+  optionBtn[1].textContent = questions[questionNumber].b;
+  optionBtn[2].textContent = questions[questionNumber].c;
+  optionBtn[3].textContent = questions[questionNumber].d;
 };
 
 // Check Answer
@@ -187,6 +190,11 @@ const gameOver = () => {
   //
   console.log("Game Over!");
 };
+
+//
+// optionButtons.forEach((btn) => {
+//   btn.addEventListener("click", checkAnswer(btn.getAttribute("data-answer")));
+// });
 
 // User is presented with their score
 
