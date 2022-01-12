@@ -83,8 +83,23 @@ const questions = [
   },
 ];
 
+// Variable to store current score
+let currentScore = 0;
+
+// Variable to track current question
+let questionNumber = 0;
+
+// Question element
+const questionElement = document.querySelector("#question");
+
+// Question options
+const optionOneBtn = document.querySelector("#optionOne");
+const optionTwoBtn = document.querySelector("#optionTwo");
+const optionThreeBtn = document.querySelector("#optionThree");
+const optionFourBtn = document.querySelector("#optionFour");
+
 // Timer - 5 minutes = 300 secs
-const timerStart = 30;
+const timerStart = 300;
 let timeRemaining;
 // Timer element
 const timerEl = document.querySelector("#timer");
@@ -112,6 +127,11 @@ const startQuiz = () => {
   console.log("Start Quiz");
   //   Start timer
   countdownTimer(timerStart, timerEl);
+};
+
+// Show question function
+const getQuestion = (questionNumber) => {
+  // Change dom elements with question and options
 };
 
 // Button to start the quiz and click event listener
