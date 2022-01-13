@@ -20,18 +20,15 @@
         <div>
           <h2>Quiz</h2>
           <button id="startBtn">Start</button>
-          <span id="timer">Timer</span>
+          <span id="timer"></span>
         </div>
       </section>
       <section id="questionCard">
         <div class="card-header">
           <span id="question">Question</span>
         </div>
-        <div id="options" class="card-body">
-          <!-- <button id="optionBtn" data-answer="a">Option A</button>
-          <button id="optionBtn" data-answer="b">Option 2</button>
-          <button id="optionBtn" data-answer="c">Option 3</button>
-          <button id="optionBtn" data-answer="d">Option 4</button> -->
+        <div class="card-body">
+          <div id="options"></div>
         </div>
         <div class="card-footer">
           <span id="answerResult">Result</span>
@@ -40,10 +37,16 @@
       <section id="quizEnd">
         <div>
           <form id="submitScore">
-            <label for="score">Save your score:</label>
-            <input name="score" type="text" maxlength="3" />
+            <label for="initials">Save your score:</label>
+            <input id="initials" name="initials" type="text" maxlength="3" />
             <button id="submit">Submit</button>
           </form>
+        </div>
+      </section>
+      <section id="highScores">
+        <button id="viewScores">View Scores</button>
+        <div>
+          <ul id="scores"></ul>
         </div>
       </section>
     </main>

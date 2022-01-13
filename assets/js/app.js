@@ -103,7 +103,7 @@ const questions = [
   },
 ];
 
-// Total number of questions
+// Total number of questions. -1 because we start at zero
 const totalQuestions = questions.length - 1;
 
 // Variable to store current score
@@ -123,6 +123,7 @@ const timerEl = document.querySelector("#timer");
 // Timer function
 const countdownTimer = (duration, element) => {
   timeRemaining = duration;
+  element.textContent = "Go!";
   const timerInterval = setInterval(() => {
     // Create minutes and seconds
     element.textContent = new Date(timeRemaining * 1000)
@@ -150,22 +151,18 @@ const startQuiz = () => {
   // Get the first question
   getQuestion();
 };
-
 // Button to start the quiz and click event listener
 const startBtn = document.querySelector("#startBtn");
 startBtn.addEventListener("click", startQuiz);
 
-// Show question function
+// Show question and create option buttons function
 const getQuestion = () => {
   // Change dom element with question
   questionElement.textContent = questions[questionNumber].question;
-
   // Turns answers object keys and values into array so we can iterate over
   const answers = Object.entries(questions[questionNumber].answers);
-
   // Where to place option buttons
   const optionsElement = document.querySelector("#options");
-
   // Dynamically create option buttons
   answers.forEach(([key, value]) => {
     // Create the button  to insert
@@ -247,11 +244,18 @@ const gameOver = () => {
 const submitScore = (e) => {
   // Prevent form submit default action
   e.preventDefault();
-  console.log("Score submitted");
+  // Get user input
+  let initials = document.querySelector("#initials");
+  // Check input is not blank
+  if (initials.value) {
+    console.log(`${initials.value} scored: ${currentScore}`);
+  } else {
+    console.log(`You must enter a name`);
+  }
 };
 
 // Submit score button
-const submitScoreBtn = document.querySelector("#submitScore");
+const submitScoreBtn = document.querySelector("#submit");
 submitScoreBtn.addEventListener("click", submitScore);
 
 // Function to hide page element
@@ -278,3 +282,9 @@ const resetQuiz = () => {
 // -> JSON object to store scores
 // // -> convert to string to save to local storage
 // // // ->
+// let highScores = {};
+
+//
+// const highScores = localStorage.getItem("highScores");
+
+// localStorage.setItem("highScores", highScores);
