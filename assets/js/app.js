@@ -124,11 +124,15 @@ let timeRemaining;
 const timerElement = document.querySelector("#timer");
 // Timer interval
 let timerInterval;
+// Submit form
+const submitScoreForm = document.querySelector("#submitScore");
+// High scores section
+const highScores = document.querySelector("#highScores");
 
 // Timer function
 const countdownTimer = (duration) => {
   timerElement.textContent = "Go!";
-  timeRemaining = duration;
+  timeRemaining = duration - 1;
   // Timer interval
   timerInterval = setInterval(() => {
     // Remove the danger class if present
@@ -207,16 +211,6 @@ const checkAnswer = (answer) => {
   }
 };
 
-// Show result and fade away
-const fadeResult = (result) => {
-  questionResult.textContent = result;
-  questionResult.classList.add("fade-out");
-  setTimeout(() => {
-    questionResult.textContent = "";
-    questionResult.classList.remove("fade-out");
-  }, 1500);
-};
-
 // Correct answer = next question
 const correctAnswer = () => {
   console.log("Correct");
@@ -254,6 +248,22 @@ const incorrectAnswer = () => {
   timerElement.classList.add("danger");
 };
 
+// Show result and fade away
+const fadeResult = (result) => {
+  questionResult.textContent = result;
+  questionResult.classList.add("fade-out");
+  setTimeout(() => {
+    questionResult.textContent = "";
+    questionResult.classList.remove("fade-out");
+  }, 1000);
+};
+
+// Display current score
+const displayCurrentScore = (score) => {
+  const currentScoreElement = document.querySelector("#currentScore");
+  currentScoreElement.textContent = `Score: ${score}/${questions.length}`;
+};
+
 // Game finishes when all questions answered or timer = 0
 const gameOver = () => {
   console.log("Game Over!");
@@ -265,12 +275,6 @@ const gameOver = () => {
   finalScore(currentScore);
   // Show score submit
   toggleHide(quizEnd);
-};
-
-// Display current score
-const displayCurrentScore = (score) => {
-  const currentScoreElement = document.querySelector("#currentScore");
-  currentScoreElement.textContent = `Score: ${score}/${questions.length}`;
 };
 
 // User is presented with their score
@@ -322,7 +326,6 @@ const displayScores = () => {
     scoreItem.textContent = `${key}: ${value}`;
     scoreList.append(scoreItem);
   });
-  const highScores = document.querySelector("#highScores");
   toggleHide(highScores);
 };
 // View scores button
@@ -352,6 +355,12 @@ const addScore = (initials, score) => {
   const updateScores = Object.assign(prevScores, newScore);
   // Save the score to local storage
   localStorage.setItem("highScores", JSON.stringify(updateScores));
+  // Hide Quiz end submit form
+  toggleHide(submitScoreForm);
+  // Open high scores table
+  displayScores();
+  // Show high scores
+  removeHide(highScores);
 };
 
 // Clear high scores function
@@ -363,9 +372,19 @@ const clearScores = () => {
 const clearScoresBtn = document.querySelector("#clearScores");
 clearScoresBtn.addEventListener("click", clearScores);
 
-// Function to toggle element display class
+// Function to toggle hide class
 const toggleHide = (element) => {
   element.classList.toggle("hide");
+};
+
+// Function to remove hide class
+const removeHide = (element) => {
+  element.classList.remove("hide");
+};
+
+// Function to add hide class
+const addHide = (element) => {
+  element.classList.add("hide");
 };
 
 // Reset quiz
@@ -378,8 +397,14 @@ const resetQuiz = () => {
   currentScore = 0;
   // Reset current question number
   questionNumber = 0;
+  // Clear timer element
+  timerElement.textContent = "";
+  // Unhide submit form
+  removeHide(submitScoreForm);
   // Hide Quiz end
-  toggleHide(quizEnd);
+  addHide(quizEnd);
+  // Hide high scores
+  addHide(highScores);
 };
 // Play again button
 const playAgain = document.querySelector("#playAgain");
