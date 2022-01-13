@@ -1,0 +1,11 @@
+#questionCard {
+  visibility: hidden;
+}
+
+#quizEnd {
+  visibility: hidden;
+}
+
+/* #highScores {
+  visibility: hidden;
+} */

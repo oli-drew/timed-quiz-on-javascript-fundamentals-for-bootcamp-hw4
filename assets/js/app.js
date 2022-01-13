@@ -112,8 +112,17 @@ let currentScore = 0;
 // Variable to track current question
 let questionNumber = 0;
 
-// Question element
-const questionElement = document.querySelector("#question");
+// Question card
+const questionCard = document.querySelector("#questionCard");
+
+// Question text element
+const questionText = document.querySelector("#questionText");
+
+// Question result
+const questionResult = document.querySelector("#questionResult");
+
+// Quiz end section
+const quizEnd = document.querySelector("#quizEnd");
 
 // Timer - 5 minutes = 300 secs
 const timerStart = 300;
@@ -146,6 +155,8 @@ const startQuiz = () => {
   console.log("Start Quiz");
   // Disable start button
   startBtn.disabled = true;
+  // Hide start button
+  elementVisibility(startBtn, "hidden");
   //   Start timer
   countdownTimer(timerStart, timerEl);
   // Get the first question
@@ -160,7 +171,7 @@ startBtn.addEventListener("click", startQuiz);
 // Show question and create option buttons function
 const getQuestion = () => {
   // Change dom element with question
-  questionElement.textContent = questions[questionNumber].question;
+  questionText.textContent = questions[questionNumber].question;
   // Turns answers object keys and values into array so we can iterate over
   const answers = Object.entries(questions[questionNumber].answers);
   // Where to place option buttons
@@ -181,6 +192,9 @@ const getQuestion = () => {
     });
     // Append button
     optionsElement.append(optionBtn);
+    // Show question card
+    // showElement(questionCard);
+    elementVisibility(questionCard, "visible");
   });
 };
 
@@ -238,8 +252,15 @@ const removeOptions = () => {
 
 // Game finishes when all questions answered or timer = 0
 const gameOver = () => {
-  //
   console.log("Game Over!");
+  // Clear timer
+  // clearInterval(timerInterval);
+  // Hide questions
+  elementVisibility(questionCard, "hidden");
+  // Show final score
+  finalScore(currentScore);
+  // Show score submit
+  elementVisibility(quizEnd, "visible");
 };
 
 // Display current score
@@ -249,8 +270,9 @@ const displayCurrentScore = (score) => {
 };
 
 // User is presented with their score
-const finalScore = () => {
-  //
+const finalScore = (score) => {
+  const finalScoreElement = document.querySelector("#finalScore");
+  finalScoreElement.textContent = `You scored: ${score}/${questions.length}`;
 };
 
 // User can enter initials into form to save score to leader board
@@ -283,7 +305,7 @@ const displayScores = () => {
   // Convert to an array so we can iterate and sort
   const scoresArr = Object.entries(scores);
   // sort by value
-
+  // --- TODO --- //
   // Select the score list element
   const scoreList = document.querySelector("#scoreList");
   // Remove any existing children
@@ -324,27 +346,38 @@ const addScore = (initials, score) => {
   const updateScores = Object.assign(prevScores, newScore);
   // Save the score to local storage
   localStorage.setItem("highScores", JSON.stringify(updateScores));
-  // return updateScores;
 };
 
 // localStorage.clear();
 
 // Function to hide page element
 const hideElement = (element) => {
-  element.style.display = "none";
+  element.style.visibility = "hidden";
 };
 
 // Function to show page element
 const showElement = (element) => {
-  element.style.display = "block";
+  element.style.visibility = "visible";
+};
+
+// Function to change element visibility
+const elementVisibility = (element, visibility) => {
+  element.style.visibility = visibility;
 };
 
 // Reset quiz
 const resetQuiz = () => {
   // Enable start button
   startBtn.disabled = false;
+  // Hide start button
+  elementVisibility(startBtn, "visible");
   // Reset current score
   currentScore = 0;
   // Reset current question number
   questionNumber = 0;
+  // Hide Quiz end
+  elementVisibility(quizEnd, "hidden");
 };
+// View scores button
+const playAgain = document.querySelector("#playAgain");
+playAgain.addEventListener("click", resetQuiz);

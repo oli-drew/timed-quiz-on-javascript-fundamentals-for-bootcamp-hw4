@@ -19,32 +19,32 @@
     <main>
       <!-- Main Content -->
       <section id="quizStart">
-        <div>
-          <h2>Quiz</h2>
-          <button id="startBtn">Start Quiz</button>
-        </div>
+        <button id="startBtn">Start Quiz</button>
       </section>
+
       <section id="questionCard">
         <div class="card-header">
-          <span id="question">Question</span>
+          <span id="questionText">Question</span>
           <span id="currentScore"></span>
         </div>
         <div class="card-body">
           <div id="options"></div>
         </div>
         <div class="card-footer">
-          <span id="answerResult">Result</span>
+          <span id="questionResult"></span>
         </div>
       </section>
+
       <section id="quizEnd">
-        <div>
-          <form id="submitScore">
-            <label for="initials">Save your score:</label>
-            <input id="initials" name="initials" type="text" maxlength="3" />
-            <button id="submit">Submit</button>
-          </form>
-        </div>
+        <span id="finalScore"></span>
+        <form id="submitScore">
+          <label for="initials">Save your score:</label>
+          <input id="initials" name="initials" type="text" maxlength="3" />
+          <button id="submit">Submit</button>
+        </form>
+        <button id="playAgain">Play again</button>
       </section>
+
       <section id="highScores">
         <ul id="scoreList"></ul>
       </section>
