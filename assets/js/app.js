@@ -128,22 +128,24 @@ const quizEnd = document.querySelector("#quizEnd");
 const timerStart = 300;
 let timeRemaining;
 // Timer element
-const timerEl = document.querySelector("#timer");
+const timerElement = document.querySelector("#timer");
+// Timer interval
+let timerInterval;
 // Timer function
-const countdownTimer = (duration, element) => {
+const countdownTimer = (duration) => {
+  timerElement.textContent = "Go!";
   timeRemaining = duration;
-  element.textContent = "Go!";
-  const timerInterval = setInterval(() => {
+  // Timer interval
+  timerInterval = setInterval(() => {
     // Create minutes and seconds
-    element.textContent = new Date(timeRemaining * 1000)
+    timerElement.textContent = new Date(timeRemaining * 1000)
       .toISOString()
-      .substr(14, 5);
+      .substring(14, 19);
     // Decrement timer
     timeRemaining--;
     // When timer reaches 0
     if (timeRemaining < 0) {
-      element.textContent = "Times up!";
-      clearInterval(timerInterval);
+      timerElement.textContent = "Times up!";
       // Finish game when timer reaches 0
       gameOver();
     }
@@ -159,7 +161,7 @@ const startQuiz = () => {
   // elementVisibility(startBtn, "hidden");
   toggleHide(startBtn);
   //   Start timer
-  countdownTimer(timerStart, timerEl);
+  countdownTimer(timerStart);
   // Get the first question
   getQuestion();
   // Display question
@@ -258,14 +260,12 @@ const removeOptions = () => {
 const gameOver = () => {
   console.log("Game Over!");
   // Clear timer
-  // clearInterval(timerInterval);
+  clearInterval(timerInterval);
   // Hide questions
-  // elementVisibility(questionCard, "hidden");
   toggleHide(questionCard);
   // Show final score
   finalScore(currentScore);
   // Show score submit
-  // elementVisibility(quizEnd, "visible");
   toggleHide(quizEnd);
 };
 
@@ -358,11 +358,6 @@ const addScore = (initials, score) => {
 
 // localStorage.clear();
 
-// Function to change element visibility
-// const elementVisibility = (element, visibility) => {
-//   element.style.visibility = visibility;
-// };
-
 // Function to toggle element display class
 const toggleHide = (element) => {
   element.classList.toggle("hide");
@@ -373,14 +368,12 @@ const resetQuiz = () => {
   // Enable start button
   startBtn.disabled = false;
   // Hide start button
-  // elementVisibility(startBtn, "visible");
   toggleHide(startBtn);
   // Reset current score
   currentScore = 0;
   // Reset current question number
   questionNumber = 0;
   // Hide Quiz end
-  // elementVisibility(quizEnd, "hidden");
   toggleHide(quizEnd);
 };
 // View scores button
