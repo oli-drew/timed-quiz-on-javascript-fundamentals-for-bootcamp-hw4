@@ -249,6 +249,8 @@ const submitScore = (e) => {
   // Check input is not blank
   if (initials.value) {
     console.log(`${initials.value} scored: ${currentScore}`);
+    // Save the score
+    addScore(initials.value, currentScore);
   } else {
     console.log(`You must enter a name`);
   }
@@ -284,7 +286,30 @@ const resetQuiz = () => {
 // // // ->
 // let highScores = {};
 
-//
-// const highScores = localStorage.getItem("highScores");
+// Function to get previous high scores
+const getScores = () => {
+  const highScores = localStorage.getItem("highScores");
+  // If not null
+  if (highScores) {
+    // Return the scores as an object
+    return JSON.parse(highScores);
+  } else {
+    // Return empty object
+    return {};
+  }
+};
 
-// localStorage.setItem("highScores", highScores);
+// Function to add a high score
+const addScore = (initials, score) => {
+  // Players new score object
+  const newScore = { [initials]: score };
+  // Get the old scores object
+  const prevScores = getScores();
+  // Assign new score to old scores object
+  const updateScores = Object.assign(prevScores, newScore);
+  // Save the score to local storage
+  localStorage.setItem("highScores", JSON.stringify(updateScores));
+  // return updateScores;
+};
+
+// localStorage.clear();
