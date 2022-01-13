@@ -11,6 +11,6 @@ button {
 }
 
 .fade-out {
-  transition: 2s;
+  transition: 0.8s;
   opacity: 0;
 }

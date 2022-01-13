@@ -6,8 +6,6 @@ const questions = [
     answers: {
       a: "JavaScript",
       b: "Java Source",
-      c: "Just Sing",
-      d: "Jeremy Slarkson",
     },
     correct: "a",
   },
@@ -27,7 +25,6 @@ const questions = [
       a: "Correct",
       b: "Answer 2",
       c: "Answer 3",
-      d: "Answer 4",
     },
     correct: "a",
   },
@@ -38,6 +35,7 @@ const questions = [
       b: "Answer 2",
       c: "Answer 3",
       d: "Correct",
+      e: "Answer",
     },
     correct: "d",
   },
@@ -209,12 +207,21 @@ const checkAnswer = (answer) => {
   }
 };
 
+// Show result and fade away
+const fadeResult = (result) => {
+  questionResult.textContent = result;
+  questionResult.classList.add("fade-out");
+  setTimeout(() => {
+    questionResult.textContent = "";
+    questionResult.classList.remove("fade-out");
+  }, 1500);
+};
+
 // Correct answer = next question
 const correctAnswer = () => {
   console.log("Correct");
   // Set result to correct!
-  questionResult.textContent = "Correct!";
-  questionResult.classList.add("fade-out");
+  fadeResult("Correct!");
   // If question number is less than the total number of questions go to next
   if (questionNumber < totalQuestions) {
     console.log("Next question");
@@ -240,8 +247,7 @@ const correctAnswer = () => {
 const incorrectAnswer = () => {
   console.log("Wrong");
   // Set result to wrong!
-  questionResult.textContent = "Wrong!";
-  questionResult.classList.add("fade-out");
+  fadeResult("Wrong!");
   //   Remove 20 secs from timer
   timeRemaining = timeRemaining - 20;
   // Add danger class to timer
@@ -289,7 +295,7 @@ const submitScore = (e) => {
     // Clear value
     initialsElement.value = "";
   } else {
-    console.log(`You must enter a name`);
+    confirm("Your initials are required");
   }
 };
 
@@ -348,7 +354,7 @@ const addScore = (initials, score) => {
   localStorage.setItem("highScores", JSON.stringify(updateScores));
 };
 
-// Clear high scores button
+// Clear high scores function
 const clearScores = () => {
   localStorage.removeItem("highScores");
   scoreList.innerHTML = "";
