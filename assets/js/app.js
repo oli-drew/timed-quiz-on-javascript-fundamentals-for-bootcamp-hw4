@@ -282,11 +282,29 @@ const resetQuiz = () => {
   questionNumber = 0;
 };
 
-// Local storage for leader board
-// -> JSON object to store scores
-// // -> convert to string to save to local storage
-// // // ->
-// let highScores = {};
+// Function to display high scores
+const displayScores = () => {
+  console.log("View scores");
+  // Scores as object
+  const scores = getScores();
+  // Convert to an array so we can iterate and sort
+  const scoresArr = Object.entries(scores);
+  // sort by value
+
+  // Select the score list element
+  const scoreList = document.querySelector("#scoreList");
+  // Iterate over the scores and display
+  scoresArr.forEach(([key, value]) => {
+    // Create the list item  to insert
+    const scoreItem = document.createElement("li");
+    // Set list item text
+    scoreItem.textContent = `${key}: ${value}`;
+    scoreList.append(scoreItem);
+  });
+};
+// View scores button
+const viewScores = document.querySelector("#viewScores");
+viewScores.addEventListener("click", displayScores);
 
 // Function to get previous high scores
 const getScores = () => {
@@ -314,4 +332,4 @@ const addScore = (initials, score) => {
   // return updateScores;
 };
 
-// localStorage.clear();
+localStorage.clear();
