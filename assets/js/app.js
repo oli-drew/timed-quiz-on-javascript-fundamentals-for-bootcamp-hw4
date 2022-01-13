@@ -124,6 +124,9 @@ const questionResult = document.querySelector("#questionResult");
 // Quiz end section
 const quizEnd = document.querySelector("#quizEnd");
 
+// Select the score list element
+const scoreList = document.querySelector("#scoreList");
+
 // Timer - 5 minutes = 300 secs
 const timerStart = 300;
 let timeRemaining;
@@ -201,8 +204,6 @@ const getQuestion = () => {
     });
     // Append button
     optionsElement.append(optionBtn);
-    // Show question card
-    // elementVisibility(questionCard, "visible");
   });
 };
 
@@ -315,8 +316,6 @@ const displayScores = () => {
   // sort by value
   // --- TODO --- //
 
-  // Select the score list element
-  const scoreList = document.querySelector("#scoreList");
   // Remove any existing children
   scoreList.innerHTML = "";
   // Iterate over the scores and display
@@ -359,7 +358,14 @@ const addScore = (initials, score) => {
   localStorage.setItem("highScores", JSON.stringify(updateScores));
 };
 
-// localStorage.clear();
+// Clear high scores button
+const clearScores = () => {
+  localStorage.removeItem("highScores");
+  scoreList.innerHTML = "";
+};
+// Clear scores button
+const clearScoresBtn = document.querySelector("#clearScores");
+clearScoresBtn.addEventListener("click", clearScores);
 
 // Function to toggle element display class
 const toggleHide = (element) => {
