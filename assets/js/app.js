@@ -156,11 +156,14 @@ const startQuiz = () => {
   // Disable start button
   startBtn.disabled = true;
   // Hide start button
-  elementVisibility(startBtn, "hidden");
+  // elementVisibility(startBtn, "hidden");
+  toggleHide(startBtn);
   //   Start timer
   countdownTimer(timerStart, timerEl);
   // Get the first question
   getQuestion();
+  // Display question
+  toggleHide(questionCard);
   // Display score
   displayCurrentScore(currentScore);
 };
@@ -176,6 +179,8 @@ const getQuestion = () => {
   const answers = Object.entries(questions[questionNumber].answers);
   // Where to place option buttons
   const optionsElement = document.querySelector("#options");
+  // CLear element children
+  optionsElement.innerHTML = "";
   // Dynamically create option buttons
   answers.forEach(([key, value]) => {
     // Create the button  to insert
@@ -193,8 +198,7 @@ const getQuestion = () => {
     // Append button
     optionsElement.append(optionBtn);
     // Show question card
-    // showElement(questionCard);
-    elementVisibility(questionCard, "visible");
+    // elementVisibility(questionCard, "visible");
   });
 };
 
@@ -256,11 +260,13 @@ const gameOver = () => {
   // Clear timer
   // clearInterval(timerInterval);
   // Hide questions
-  elementVisibility(questionCard, "hidden");
+  // elementVisibility(questionCard, "hidden");
+  toggleHide(questionCard);
   // Show final score
   finalScore(currentScore);
   // Show score submit
-  elementVisibility(quizEnd, "visible");
+  // elementVisibility(quizEnd, "visible");
+  toggleHide(quizEnd);
 };
 
 // Display current score
@@ -318,6 +324,8 @@ const displayScores = () => {
     scoreItem.textContent = `${key}: ${value}`;
     scoreList.append(scoreItem);
   });
+  const highScores = document.querySelector("#highScores");
+  toggleHide(highScores);
 };
 // View scores button
 const viewScores = document.querySelector("#viewScores");
@@ -350,19 +358,14 @@ const addScore = (initials, score) => {
 
 // localStorage.clear();
 
-// Function to hide page element
-const hideElement = (element) => {
-  element.style.visibility = "hidden";
-};
-
-// Function to show page element
-const showElement = (element) => {
-  element.style.visibility = "visible";
-};
-
 // Function to change element visibility
-const elementVisibility = (element, visibility) => {
-  element.style.visibility = visibility;
+// const elementVisibility = (element, visibility) => {
+//   element.style.visibility = visibility;
+// };
+
+// Function to toggle element display class
+const toggleHide = (element) => {
+  element.classList.toggle("hide");
 };
 
 // Reset quiz
@@ -370,13 +373,15 @@ const resetQuiz = () => {
   // Enable start button
   startBtn.disabled = false;
   // Hide start button
-  elementVisibility(startBtn, "visible");
+  // elementVisibility(startBtn, "visible");
+  toggleHide(startBtn);
   // Reset current score
   currentScore = 0;
   // Reset current question number
   questionNumber = 0;
   // Hide Quiz end
-  elementVisibility(quizEnd, "hidden");
+  // elementVisibility(quizEnd, "hidden");
+  toggleHide(quizEnd);
 };
 // View scores button
 const playAgain = document.querySelector("#playAgain");

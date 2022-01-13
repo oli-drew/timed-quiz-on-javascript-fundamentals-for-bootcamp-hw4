@@ -1,11 +1,7 @@
-#questionCard {
-  visibility: hidden;
+button {
+  margin: 0.5rem;
 }
 
-#quizEnd {
-  visibility: hidden;
+.hide {
+  display: none;
 }
-
-/* #highScores {
-  visibility: hidden;
-} */
