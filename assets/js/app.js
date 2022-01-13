@@ -126,6 +126,8 @@ const countdownTimer = (duration, element) => {
 // Start button clicked function
 const startQuiz = () => {
   console.log("Start Quiz");
+  // Disable start button
+  startBtn.disabled = true;
   //   Start timer
   countdownTimer(timerStart, timerEl);
   // Get the first question
@@ -230,6 +232,16 @@ const hideElement = (element) => {
 // Function to show page element
 const showElement = (element) => {
   element.style.display = "block";
+};
+
+// Reset quiz
+const resetQuiz = () => {
+  // Enable start button
+  startBtn.disabled = false;
+  // Reset current score
+  currentScore = 0;
+  // Reset current question number
+  questionNumber = 0;
 };
 
 // Local storage for leader board
