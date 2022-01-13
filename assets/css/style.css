@@ -5,3 +5,12 @@ button {
 .hide {
   display: none;
 }
+
+.danger {
+  color: red;
+}
+
+.fade-out {
+  transition: 2s;
+  opacity: 0;
+}

@@ -15,7 +15,7 @@ const questions = [
     question: "Q2: Question Two?",
     answers: {
       a: "Answer 1",
-      b: "Answer 2",
+      b: "Correct",
       c: "Answer 3",
       d: "Answer 4",
     },
@@ -24,7 +24,7 @@ const questions = [
   {
     question: "Q3: Question Three?",
     answers: {
-      a: "Answer 1",
+      a: "Correct",
       b: "Answer 2",
       c: "Answer 3",
       d: "Answer 4",
@@ -37,7 +37,7 @@ const questions = [
       a: "Answer 1",
       b: "Answer 2",
       c: "Answer 3",
-      d: "Answer 4",
+      d: "Correct",
     },
     correct: "d",
   },
@@ -46,7 +46,7 @@ const questions = [
     answers: {
       a: "Answer 1",
       b: "Answer 2",
-      c: "Answer 3",
+      c: "Correct",
       d: "Answer 4",
     },
     correct: "c",
@@ -55,7 +55,7 @@ const questions = [
     question: "Q6: Question Six?",
     answers: {
       a: "Answer 1",
-      b: "Answer 2",
+      b: "Correct",
       c: "Answer 3",
       d: "Answer 4",
     },
@@ -67,7 +67,7 @@ const questions = [
       a: "Answer 1",
       b: "Answer 2",
       c: "Answer 3",
-      d: "Answer 4",
+      d: "Correct",
     },
     correct: "d",
   },
@@ -77,7 +77,7 @@ const questions = [
       a: "Answer 1",
       b: "Answer 2",
       c: "Answer 3",
-      d: "Answer 4",
+      d: "Correct",
     },
     correct: "d",
   },
@@ -85,7 +85,7 @@ const questions = [
     question: "Q9: Question Nine?",
     answers: {
       a: "Answer 1",
-      b: "Answer 2",
+      b: "Correct",
       c: "Answer 3",
       d: "Answer 4",
     },
@@ -96,7 +96,7 @@ const questions = [
     answers: {
       a: "Answer 1",
       b: "Answer 2",
-      c: "Answer 3",
+      c: "Correct",
       d: "Answer 4",
     },
     correct: "c",
@@ -137,6 +137,8 @@ const countdownTimer = (duration) => {
   timeRemaining = duration;
   // Timer interval
   timerInterval = setInterval(() => {
+    // Remove the danger class if present
+    timerElement.classList.remove("danger");
     // Create minutes and seconds
     timerElement.textContent = new Date(timeRemaining * 1000)
       .toISOString()
@@ -217,6 +219,9 @@ const checkAnswer = (answer) => {
 // Correct answer = next question
 const correctAnswer = () => {
   console.log("Correct");
+  // Set result to correct!
+  questionResult.textContent = "Correct!";
+  questionResult.classList.add("fade-out");
   // If question number is less than the total number of questions go to next
   if (questionNumber < totalQuestions) {
     console.log("Next question");
@@ -226,15 +231,11 @@ const correctAnswer = () => {
     displayCurrentScore(currentScore);
     // Increase question number
     questionNumber++;
-    // Remove options
-    removeOptions();
     // Get next question
     getQuestion();
   } else {
     // Add to score for last question
     currentScore++;
-    // Remove answer options
-    removeOptions();
     // console.log(currentScore);
     displayCurrentScore(currentScore);
     // Finish game
@@ -244,16 +245,14 @@ const correctAnswer = () => {
 
 // Incorrect answer = time subtracted from timer (20s)
 const incorrectAnswer = () => {
-  //
   console.log("Wrong");
+  // Set result to wrong!
+  questionResult.textContent = "Wrong!";
+  questionResult.classList.add("fade-out");
   //   Remove 20 secs from timer
   timeRemaining = timeRemaining - 20;
-};
-
-// Remove answer options
-const removeOptions = () => {
-  const options = document.querySelectorAll("#options button");
-  options.forEach((option) => option.remove());
+  // Add danger class to timer
+  timerElement.classList.add("danger");
 };
 
 // Game finishes when all questions answered or timer = 0
@@ -272,7 +271,7 @@ const gameOver = () => {
 // Display current score
 const displayCurrentScore = (score) => {
   const currentScoreElement = document.querySelector("#currentScore");
-  currentScoreElement.textContent = `Score: ${score}`;
+  currentScoreElement.textContent = `Score: ${score}/${questions.length}`;
 };
 
 // User is presented with their score
@@ -294,6 +293,8 @@ const submitScore = (e) => {
     console.log(`${initials} scored: ${currentScore}`);
     // Save the score
     addScore(initials, currentScore);
+    // Clear value
+    initialsElement.value = "";
   } else {
     console.log(`You must enter a name`);
   }
@@ -310,8 +311,10 @@ const displayScores = () => {
   const scores = getScores();
   // Convert to an array so we can iterate and sort
   const scoresArr = Object.entries(scores);
+
   // sort by value
   // --- TODO --- //
+
   // Select the score list element
   const scoreList = document.querySelector("#scoreList");
   // Remove any existing children
@@ -376,6 +379,6 @@ const resetQuiz = () => {
   // Hide Quiz end
   toggleHide(quizEnd);
 };
-// View scores button
+// Play again button
 const playAgain = document.querySelector("#playAgain");
 playAgain.addEventListener("click", resetQuiz);
