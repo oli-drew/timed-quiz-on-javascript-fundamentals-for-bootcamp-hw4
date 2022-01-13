@@ -150,6 +150,8 @@ const startQuiz = () => {
   countdownTimer(timerStart, timerEl);
   // Get the first question
   getQuestion();
+  // Display score
+  displayCurrentScore(currentScore);
 };
 // Button to start the quiz and click event listener
 const startBtn = document.querySelector("#startBtn");
@@ -200,7 +202,8 @@ const correctAnswer = () => {
     console.log("Next question");
     // Increment score
     currentScore++;
-    console.log(currentScore);
+    // Display current score
+    displayCurrentScore(currentScore);
     // Increase question number
     questionNumber++;
     // Remove options
@@ -212,7 +215,8 @@ const correctAnswer = () => {
     currentScore++;
     // Remove answer options
     removeOptions();
-    console.log(currentScore);
+    // console.log(currentScore);
+    displayCurrentScore(currentScore);
     // Finish game
     gameOver();
   }
@@ -238,7 +242,16 @@ const gameOver = () => {
   console.log("Game Over!");
 };
 
+// Display current score
+const displayCurrentScore = (score) => {
+  const currentScoreElement = document.querySelector("#currentScore");
+  currentScoreElement.textContent = `Score: ${score}`;
+};
+
 // User is presented with their score
+const finalScore = () => {
+  //
+};
 
 // User can enter initials into form to save score to leader board
 const submitScore = (e) => {
@@ -262,26 +275,6 @@ const submitScore = (e) => {
 const submitScoreBtn = document.querySelector("#submit");
 submitScoreBtn.addEventListener("click", submitScore);
 
-// Function to hide page element
-const hideElement = (element) => {
-  element.style.display = "none";
-};
-
-// Function to show page element
-const showElement = (element) => {
-  element.style.display = "block";
-};
-
-// Reset quiz
-const resetQuiz = () => {
-  // Enable start button
-  startBtn.disabled = false;
-  // Reset current score
-  currentScore = 0;
-  // Reset current question number
-  questionNumber = 0;
-};
-
 // Function to display high scores
 const displayScores = () => {
   console.log("View scores");
@@ -293,6 +286,8 @@ const displayScores = () => {
 
   // Select the score list element
   const scoreList = document.querySelector("#scoreList");
+  // Remove any existing children
+  scoreList.innerHTML = "";
   // Iterate over the scores and display
   scoresArr.forEach(([key, value]) => {
     // Create the list item  to insert
@@ -332,4 +327,24 @@ const addScore = (initials, score) => {
   // return updateScores;
 };
 
-localStorage.clear();
+// localStorage.clear();
+
+// Function to hide page element
+const hideElement = (element) => {
+  element.style.display = "none";
+};
+
+// Function to show page element
+const showElement = (element) => {
+  element.style.display = "block";
+};
+
+// Reset quiz
+const resetQuiz = () => {
+  // Enable start button
+  startBtn.disabled = false;
+  // Reset current score
+  currentScore = 0;
+  // Reset current question number
+  questionNumber = 0;
+};

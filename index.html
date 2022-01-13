@@ -11,7 +11,9 @@
     <header>
       <nav>
         <!-- Navbar -->
+        <button id="viewScores">View Scores</button>
         <h1>JavaScript Fundamentals Quiz</h1>
+        <span id="timer"></span>
       </nav>
     </header>
     <main>
@@ -19,13 +21,13 @@
       <section id="quizStart">
         <div>
           <h2>Quiz</h2>
-          <button id="startBtn">Start</button>
-          <span id="timer"></span>
+          <button id="startBtn">Start Quiz</button>
         </div>
       </section>
       <section id="questionCard">
         <div class="card-header">
           <span id="question">Question</span>
+          <span id="currentScore"></span>
         </div>
         <div class="card-body">
           <div id="options"></div>
@@ -44,10 +46,7 @@
         </div>
       </section>
       <section id="highScores">
-        <button id="viewScores">View Scores</button>
-        <div>
-          <ul id="scoreList"></ul>
-        </div>
+        <ul id="scoreList"></ul>
       </section>
     </main>
     <footer>
