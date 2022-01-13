@@ -5,7 +5,8 @@ const questions = [
     question: "Q1: What is JS an abbreviation for?",
     answers: {
       a: "JavaScript",
-      b: "Java Source",
+      b: "JavaSource",
+      c: "JerkSauce",
     },
     correct: "a",
   },
@@ -90,11 +91,12 @@ const questions = [
     correct: "b",
   },
   {
-    question: "Q10: Question Ten?",
+    question:
+      "Q10: In JavaScript what number is derived by dividing negative number by zero?",
     answers: {
       a: "Answer 1",
       b: "Answer 2",
-      c: "Correct",
+      c: "Negative Infinity",
       d: "Answer 4",
     },
     correct: "c",
