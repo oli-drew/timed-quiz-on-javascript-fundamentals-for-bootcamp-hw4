@@ -105,28 +105,20 @@ const questions = [
 
 // Total number of questions. -1 because we start at zero
 const totalQuestions = questions.length - 1;
-
 // Variable to store current score
 let currentScore = 0;
-
 // Variable to track current question
 let questionNumber = 0;
-
 // Question card
 const questionCard = document.querySelector("#questionCard");
-
 // Question text element
 const questionText = document.querySelector("#questionText");
-
 // Question result
 const questionResult = document.querySelector("#questionResult");
-
 // Quiz end section
 const quizEnd = document.querySelector("#quizEnd");
-
 // Select the score list element
 const scoreList = document.querySelector("#scoreList");
-
 // Timer - 5 minutes = 300 secs
 const timerStart = 300;
 let timeRemaining;
@@ -134,6 +126,7 @@ let timeRemaining;
 const timerElement = document.querySelector("#timer");
 // Timer interval
 let timerInterval;
+
 // Timer function
 const countdownTimer = (duration) => {
   timerElement.textContent = "Go!";
@@ -163,7 +156,6 @@ const startQuiz = () => {
   // Disable start button
   startBtn.disabled = true;
   // Hide start button
-  // elementVisibility(startBtn, "hidden");
   toggleHide(startBtn);
   //   Start timer
   countdownTimer(timerStart);
@@ -312,10 +304,8 @@ const displayScores = () => {
   const scores = getScores();
   // Convert to an array so we can iterate and sort
   const scoresArr = Object.entries(scores);
-
-  // sort by value
-  // --- TODO --- //
-
+  // Sort by players score
+  scoresArr.sort((a, b) => b[1] - a[1]);
   // Remove any existing children
   scoreList.innerHTML = "";
   // Iterate over the scores and display
