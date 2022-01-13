@@ -244,13 +244,15 @@ const gameOver = () => {
 const submitScore = (e) => {
   // Prevent form submit default action
   e.preventDefault();
-  // Get user input
-  let initials = document.querySelector("#initials");
+  // Get user input. Convert to uppercase
+  const initialsElement = document.querySelector("#initials");
+  // Initials value
+  const initials = initialsElement.value.toUpperCase();
   // Check input is not blank
-  if (initials.value) {
-    console.log(`${initials.value} scored: ${currentScore}`);
+  if (initials) {
+    console.log(`${initials} scored: ${currentScore}`);
     // Save the score
-    addScore(initials.value, currentScore);
+    addScore(initials, currentScore);
   } else {
     console.log(`You must enter a name`);
   }
