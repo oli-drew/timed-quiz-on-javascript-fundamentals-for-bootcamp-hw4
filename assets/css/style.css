@@ -1,6 +1,10 @@
-button {
-  margin: 0.5rem;
+main > .container {
+  padding: 60px 15px 0;
 }
+
+/* button {
+  margin: 0.5rem;
+} */
 
 .hide {
   display: none;

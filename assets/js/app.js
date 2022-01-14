@@ -200,6 +200,8 @@ const getQuestion = () => {
     const optionBtn = document.createElement("button");
     // Set button data-answer attribute
     optionBtn.setAttribute("data-answer", key);
+    // Add class to buttons
+    optionBtn.classList.add("btn", "btn-primary", "mx-2");
     // Set button text
     optionBtn.textContent = value;
     // Add event listener to option button
