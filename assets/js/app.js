@@ -76,7 +76,7 @@ const questions = [
       "What is the name of the default JavaScript behaviour where all of the variable and function declarations are moved on top?",
     answers: {
       a: "Tugging",
-      b: "Pulling",
+      b: "Yanking",
       c: "Erecting",
       d: "Hoisting",
     },
@@ -104,9 +104,6 @@ const questions = [
   },
 ];
 
-// Randomise question array
-questions.sort(() => 0.5 - Math.random());
-
 // Total number of questions. -1 because we start at zero
 const totalQuestions = questions.length - 1;
 // Variable to store current score
@@ -119,8 +116,6 @@ const questionCard = document.querySelector("#questionCard");
 const cardFooter = document.querySelector("#cardFooter");
 // Question text element
 const questionText = document.querySelector("#questionText");
-// Question result
-// const questionResult = document.querySelector("#questionResult");
 // Quiz end section
 const quizEnd = document.querySelector("#quizEnd");
 // Select the score list element
@@ -136,6 +131,11 @@ let timerInterval;
 const submitScoreForm = document.querySelector("#submitScore");
 // High scores section
 const highScores = document.querySelector("#highScores");
+
+// Shuffle question array
+const shuffleArr = (arr) => {
+  arr.sort(() => 0.5 - Math.random());
+};
 
 // Timer function
 const countdownTimer = (duration) => {
@@ -163,6 +163,8 @@ const countdownTimer = (duration) => {
 // Start button clicked function
 const startQuiz = () => {
   console.log("Start Quiz");
+  // Shuffle Questions
+  shuffleArr(questions);
   // Disable start button
   startBtn.disabled = true;
   // Hide start button
