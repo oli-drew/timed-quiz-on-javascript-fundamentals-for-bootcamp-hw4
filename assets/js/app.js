@@ -411,6 +411,8 @@ const addHide = (element) => {
 
 // Reset quiz
 const resetQuiz = () => {
+  // Remove the last result in the footer
+  cardFooter.innerHTML = "";
   // Enable start button
   startBtn.disabled = false;
   // Hide start button
