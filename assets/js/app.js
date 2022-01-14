@@ -104,6 +104,9 @@ const questions = [
   },
 ];
 
+// Randomise question array
+questions.sort(() => 0.5 - Math.random());
+
 // Total number of questions. -1 because we start at zero
 const totalQuestions = questions.length - 1;
 // Variable to store current score
