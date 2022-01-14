@@ -81,12 +81,11 @@ const questions = [
     correct: "d",
   },
   {
-    question: "Q9: Question Nine?",
+    question:
+      "Is javascript a statically typed or a dynamically typed language?",
     answers: {
-      a: "Answer 1",
-      b: "Correct",
-      c: "Answer 3",
-      d: "Answer 4",
+      a: "Statically",
+      b: "Dynamically",
     },
     correct: "b",
   },
@@ -111,10 +110,12 @@ let currentScore = 0;
 let questionNumber = 0;
 // Question card
 const questionCard = document.querySelector("#questionCard");
+// Question card footer
+const cardFooter = document.querySelector("#cardFooter");
 // Question text element
 const questionText = document.querySelector("#questionText");
 // Question result
-const questionResult = document.querySelector("#questionResult");
+// const questionResult = document.querySelector("#questionResult");
 // Quiz end section
 const quizEnd = document.querySelector("#quizEnd");
 // Select the score list element
@@ -252,12 +253,24 @@ const incorrectAnswer = () => {
 
 // Show result and fade away
 const fadeResult = (result) => {
+  // If element exists remove it
+  const resultExists = document.getElementById("questionResult");
+  if (resultExists) {
+    resultExists.remove();
+  }
+  // Create element
+  const questionResult = document.createElement("span");
   questionResult.textContent = result;
+  questionResult.id = "questionResult";
+  cardFooter.append(questionResult);
+  // Color depending on result
+  if (result === "Correct!") {
+    questionResult.classList.add("success");
+  } else {
+    questionResult.classList.add("danger");
+  }
+  // Set fade out class
   questionResult.classList.add("fade-out");
-  setTimeout(() => {
-    questionResult.textContent = "";
-    questionResult.classList.remove("fade-out");
-  }, 1000);
 };
 
 // Display current score
