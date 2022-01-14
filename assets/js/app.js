@@ -2,7 +2,7 @@
 // 10 Questions - multiple choice - 4 answers - JS objects within an array
 const questions = [
   {
-    question: "Q1: What is JS an abbreviation for?",
+    question: "What is JS an abbreviation for?",
     answers: {
       a: "JavaScript",
       b: "JavaSource",
@@ -11,72 +11,74 @@ const questions = [
     correct: "a",
   },
   {
-    question: "Q2: Question Two?",
+    question: "What are the variable names 'i' and 'j' most commonly used for?",
     answers: {
-      a: "Answer 1",
-      b: "Correct",
-      c: "Answer 3",
-      d: "Answer 4",
+      a: "Letters",
+      b: "Counters",
+      c: "Functions",
+      d: "Arrays",
     },
     correct: "b",
   },
   {
-    question: "Q3: Question Three?",
+    question: "Is JavaScript used on the client-side or server-side?",
     answers: {
-      a: "Correct",
-      b: "Answer 2",
-      c: "Answer 3",
+      a: "Both",
+      b: "Client-side",
+      c: "Server-side",
     },
     correct: "a",
   },
   {
-    question: "Q4: Question Four?",
+    question: "Which of the options isn't a data type in JavaScript?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
-      d: "Correct",
-      e: "Answer",
+      a: "String",
+      b: "Undefined",
+      c: "Number",
+      d: "Float",
+      e: "Boolean",
     },
     correct: "d",
   },
   {
-    question: "Q5: Question Five?",
+    question:
+      "What keyword does the following phrase refer to: 'the object that the function is a property of'?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Correct",
-      d: "Answer 4",
+      a: "them",
+      b: "theirs",
+      c: "this",
+      d: "that",
     },
     correct: "c",
   },
   {
-    question: "Q6: Question Six?",
+    question:
+      "Which of the comparison operators is used to compare both value and types?",
     answers: {
-      a: "Answer 1",
-      b: "Correct",
-      c: "Answer 3",
-      d: "Answer 4",
+      a: "!=",
+      b: "===",
+      c: "&&",
+      d: "==",
     },
     correct: "b",
   },
   {
-    question: "Q7: Question Seven?",
+    question:
+      "What is the name given to a function that will be executed after another function gets executed?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
-      d: "Correct",
+      a: "Callback",
+      b: "Ringback",
     },
-    correct: "d",
+    correct: "a",
   },
   {
-    question: "Q8: Question Eight?",
+    question:
+      "What is the name of the default JavaScript behaviour where all of the variable and function declarations are moved on top?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
-      d: "Correct",
+      a: "Tugging",
+      b: "Pulling",
+      c: "Erecting",
+      d: "Hoisting",
     },
     correct: "d",
   },
@@ -91,12 +93,12 @@ const questions = [
   },
   {
     question:
-      "Q10: In JavaScript what number is derived by dividing negative number by zero?",
+      "In JavaScript what number is derived by dividing a negative number by zero?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
+      a: "42",
+      b: "Infinity",
       c: "Negative Infinity",
-      d: "Answer 4",
+      d: "Zero",
     },
     correct: "c",
   },
@@ -178,7 +180,9 @@ startBtn.addEventListener("click", startQuiz);
 // Show question and create option buttons function
 const getQuestion = () => {
   // Change dom element with question
-  questionText.textContent = questions[questionNumber].question;
+  questionText.textContent = `Q${questionNumber + 1}: ${
+    questions[questionNumber].question
+  }`;
   // Turns answers object keys and values into array so we can iterate over
   const answers = Object.entries(questions[questionNumber].answers);
   // Where to place option buttons
