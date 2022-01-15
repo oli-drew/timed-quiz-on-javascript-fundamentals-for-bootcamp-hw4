@@ -2,21 +2,9 @@ main > .container {
   padding: 60px 15px 0;
 }
 
-/* button {
-  margin: 0.5rem;
-} */
-
 .hide {
   display: none;
 }
-
-/* .danger {
-  color: red;
-}
-
-.success {
-  color: green;
-} */
 
 .fade-out {
   animation: fadeOut ease 4s;
@@ -34,39 +22,3 @@ main > .container {
     opacity: 0;
   }
 }
-
-/* @-moz-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-o-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-ms-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-} */

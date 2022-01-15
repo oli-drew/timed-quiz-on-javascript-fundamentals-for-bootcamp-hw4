@@ -16,32 +16,14 @@
   </head>
 
   <!-- Bootstrap Update -->
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100 bg-light">
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">JavaScript Quiz</a>
-          <!-- <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
-                 -->
-              </li>
-              <span id="timer" class=""></span>
-            </ul>
-          </div>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid text-white">
+          <span class="navbar-brand">JavaScript Quiz</span>
+          <span id="currentScore" class="h5"></span>
+          <span id="timer" class="h5"></span>
         </div>
       </nav>
     </header>
@@ -53,9 +35,14 @@
         <section id="quizStart">
           <h1 class="mt-5">JavaScript Fundamentals Quiz</h1>
           <p class="lead">
-            Test your knowledge on the fundamentals by taking this timed quiz!
+            Test your knowledge on the fundamentals of JavaScript by taking this
+            timed quiz!
           </p>
-          <button id="startBtn" class="btn btn-primary btn-lg">
+          <p class="lead">
+            Watch out, every time you answer a question incorrectly, 20 seconds
+            is deducted from the 5 minute timer.
+          </p>
+          <button id="startBtn" class="btn btn-success btn-lg">
             Start Quiz
           </button>
         </section>
@@ -63,14 +50,13 @@
         <section id="questionCard" class="hide">
           <div class="card text-center">
             <div class="card-header">
-              <span id="questionText">Question</span>
-              <span id="currentScore"></span>
+              <span id="questionText" class="h5">Question</span>
             </div>
             <div class="card-body">
               <div id="options" class=""></div>
             </div>
             <div id="cardFooter" class="card-footer">
-              <span class="invisible">.</span>
+              <span id="questionResult" class="invisible">Placeholder</span>
             </div>
           </div>
         </section>
@@ -78,11 +64,14 @@
         <!-- Quiz End -->
         <section id="quizEnd" class="hide">
           <div class="card text-center">
-            <div class="card-header">
+            <div class="card-header h5">
               Well done! <span id="finalScore"></span>
             </div>
-            <div class="card-body" id="submitScore">
-              <div class="input-group mb-3">
+            <div class="card-body">
+              <p id="submitSuccess" class="lead hide">
+                Score successfully submitted!
+              </p>
+              <div id="submitScore" class="input-group py-4">
                 <span class="input-group-text d-sm-none d-md-block"
                   >Save your score:</span
                 >
@@ -109,12 +98,17 @@
           </div>
         </section>
 
-        <section id="highScores" class="hide">
-          <div class="card" style="width: 18rem">
-            <ol
-              id="scoreList"
-              class="list-group list-group-numbered list-group-flush"
-            ></ol>
+        <section id="highScores" class="py-4 hide">
+          <div class="card">
+            <div class="card-header">
+              <p class="h5">High Scores</p>
+            </div>
+            <div class="card-body text-center">
+              <ol
+                id="scoreList"
+                class="list-group list-group-numbered list-group-flush"
+              ></ol>
+            </div>
             <div class="card-footer">
               <button id="clearScores" class="btn btn-outline-secondary btn-sm">
                 Clear Scores
@@ -125,64 +119,16 @@
       </div>
     </main>
 
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <button id="viewScores" class="btn btn-primary">High Scores</button>
+    <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container d-flex justify-content-between align-items-center">
+        <button id="viewScores" class="btn btn-outline-success">
+          High Scores
+        </button>
+        <a class="link-light" href="https://github.com/oli-drew"
+          >Made by Oli Drew</a
+        >
       </div>
     </footer>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
-<!-- 
-  <body>
-    <header>
-      <nav>
-        
-        <button id="viewScores">High Scores</button>
-        <h1>JavaScript Fundamentals Quiz</h1>
-        <span id="timer"></span>
-      </nav>
-    </header>
-    <main>
-    
-      <section id="quizStart">
-        <button id="startBtn">Start Quiz</button>
-      </section>
-
-      <section id="questionCard" class="hide">
-        <div class="card-header">
-          <span id="questionText">Question</span>
-          <span id="currentScore"></span>
-        </div>
-        <div class="card-body">
-          <div id="options"></div>
-        </div>
-        <div id="cardFooter" class="card-footer"></div>
-      </section>
-
-      <section id="quizEnd" class="hide">
-        <span id="finalScore"></span>
-        <form id="submitScore">
-          <label for="initials">Save your score:</label>
-          <input
-            id="initials"
-            name="initials"
-            type="text"
-            maxlength="3"
-            placeholder="Please enter your initials.."
-          />
-          <button id="submit">Submit</button>
-        </form>
-        <button id="playAgain">Play again</button>
-      </section>
-
-      <section id="highScores" class="hide">
-        <ol id="scoreList"></ol>
-        <button id="clearScores">Clear Scores</button>
-      </section>
-    </main>
-    <footer>
-
-    </footer>
-  </body>
--->

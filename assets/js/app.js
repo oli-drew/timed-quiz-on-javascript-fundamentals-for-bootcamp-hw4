@@ -129,6 +129,8 @@ const timerElement = document.querySelector("#timer");
 let timerInterval;
 // Submit form
 const submitScoreForm = document.querySelector("#submitScore");
+// Submit success message
+const submitSuccess = document.querySelector("#submitSuccess");
 // High scores section
 const highScores = document.querySelector("#highScores");
 
@@ -385,6 +387,8 @@ const addScore = (initials, score) => {
   localStorage.setItem("highScores", JSON.stringify(updateScores));
   // Hide Quiz end submit form
   toggleHide(submitScoreForm);
+  // Show score submitted message
+  removeHide(submitSuccess);
   // Open high scores table
   displayScores();
   // Show high scores
@@ -431,6 +435,8 @@ const resetQuiz = () => {
   timerElement.textContent = "";
   // Unhide submit form
   removeHide(submitScoreForm);
+  // Hide submit success message
+  addHide(submitSuccess);
   // Hide Quiz end
   addHide(quizEnd);
   // Hide high scores
