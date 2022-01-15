@@ -22,7 +22,7 @@
       <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">JavaScript Quiz</a>
-          <button
+          <!-- <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -32,7 +32,7 @@
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </button> -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
@@ -41,7 +41,6 @@
               </li>
               <span id="timer" class=""></span>
             </ul>
-            <button id="viewScores" class="btn btn-primary">High Scores</button>
           </div>
         </div>
       </nav>
@@ -83,20 +82,10 @@
               Well done! <span id="finalScore"></span>
             </div>
             <div class="card-body" id="submitScore">
-              <!-- <form id="submitScore">
-                <label for="initials">Save your score:</label>
-                <input
-                  id="initials"
-                  name="initials"
-                  type="text"
-                  maxlength="3"
-                  placeholder="Please enter your initials.."
-                />
-                <button id="submit">Submit</button>
-              </form> -->
-
               <div class="input-group mb-3">
-                <span class="input-group-text">Save your score:</span>
+                <span class="input-group-text d-sm-none d-md-block"
+                  >Save your score:</span
+                >
                 <input
                   id="initials"
                   name="initials"
@@ -121,15 +110,24 @@
         </section>
 
         <section id="highScores" class="hide">
-          <ol id="scoreList"></ol>
-          <button id="clearScores">Clear Scores</button>
+          <div class="card" style="width: 18rem">
+            <ol
+              id="scoreList"
+              class="list-group list-group-numbered list-group-flush"
+            ></ol>
+            <div class="card-footer">
+              <button id="clearScores" class="btn btn-outline-secondary btn-sm">
+                Clear Scores
+              </button>
+            </div>
+          </div>
         </section>
       </div>
     </main>
 
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
-        <span class="text-muted">Footer content</span>
+        <button id="viewScores" class="btn btn-primary">High Scores</button>
       </div>
     </footer>
     <script src="./assets/js/app.js"></script>

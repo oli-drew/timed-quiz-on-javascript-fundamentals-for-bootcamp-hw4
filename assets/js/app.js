@@ -144,7 +144,7 @@ const countdownTimer = (duration) => {
   // Timer interval
   timerInterval = setInterval(() => {
     // Remove the danger class if present
-    timerElement.classList.remove("danger");
+    timerElement.classList.remove("text-danger");
     // Create minutes and seconds
     timerElement.textContent = new Date(timeRemaining * 1000)
       .toISOString()
@@ -201,7 +201,7 @@ const getQuestion = () => {
     // Set button data-answer attribute
     optionBtn.setAttribute("data-answer", key);
     // Add class to buttons
-    optionBtn.classList.add("btn", "btn-primary", "mx-2");
+    optionBtn.classList.add("btn", "btn-primary", "m-2");
     // Set button text
     optionBtn.textContent = value;
     // Add event listener to option button
@@ -259,7 +259,7 @@ const incorrectAnswer = () => {
   //   Remove 20 secs from timer
   timeRemaining = timeRemaining - 20;
   // Add danger class to timer
-  timerElement.classList.add("danger");
+  timerElement.classList.add("text-danger");
 };
 
 // Show result and fade away
@@ -276,9 +276,9 @@ const fadeResult = (result) => {
   cardFooter.append(questionResult);
   // Color depending on result
   if (result === "Correct!") {
-    questionResult.classList.add("success");
+    questionResult.classList.add("text-success");
   } else {
-    questionResult.classList.add("danger");
+    questionResult.classList.add("text-danger");
   }
   // Set fade out class
   questionResult.classList.add("fade-out");
@@ -348,6 +348,8 @@ const displayScores = () => {
   scoresArr.forEach(([key, value]) => {
     // Create the list item  to insert
     const scoreItem = document.createElement("li");
+    // Add list item class
+    scoreItem.classList.add("list-group-item");
     // Set list item text
     scoreItem.textContent = `${key}: ${value}`;
     scoreList.append(scoreItem);

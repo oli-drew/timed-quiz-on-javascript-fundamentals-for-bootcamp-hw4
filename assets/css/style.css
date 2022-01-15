@@ -10,13 +10,13 @@ main > .container {
   display: none;
 }
 
-.danger {
+/* .danger {
   color: red;
 }
 
 .success {
   color: green;
-}
+} */
 
 .fade-out {
   animation: fadeOut ease 4s;
