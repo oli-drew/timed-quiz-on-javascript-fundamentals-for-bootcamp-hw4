@@ -34,28 +34,30 @@
         <!-- Quiz start screen -->
         <section id="quizStart">
           <h1 class="mt-5">JavaScript Fundamentals Quiz</h1>
-          <p class="lead">
-            Test your knowledge on the fundamentals of JavaScript by taking this
-            timed quiz!
-          </p>
-          <p class="lead">
-            Watch out, every time you answer a question incorrectly, 20 seconds
-            is deducted from the 5 minute timer.
-          </p>
+          <div id="quizInstructions">
+            <p class="lead">
+              Test your knowledge on the fundamentals of JavaScript by taking
+              this timed quiz!
+            </p>
+            <p class="lead">
+              Watch out, every time you answer a question incorrectly, 20
+              seconds is deducted from the 5 minute timer.
+            </p>
+          </div>
           <button id="startBtn" class="btn btn-success btn-lg">
             Start Quiz
           </button>
         </section>
         <!-- Questions card -->
-        <section id="questionCard" class="hide">
+        <section id="questionCard" class="pt-4 hide">
           <div class="card text-center">
-            <div class="card-header">
+            <div class="card-header py-3">
               <span id="questionText" class="h5">Question</span>
             </div>
-            <div class="card-body">
+            <div class="card-body py-4">
               <div id="options" class=""></div>
             </div>
-            <div id="cardFooter" class="card-footer">
+            <div id="cardFooter" class="card-footer py-3">
               <span id="questionResult" class="invisible">Placeholder</span>
             </div>
           </div>
@@ -72,7 +74,7 @@
                 Score successfully submitted!
               </p>
               <div id="submitScore" class="input-group py-4">
-                <span class="input-group-text d-sm-none d-md-block"
+                <span class="input-group-text d-none d-md-block"
                   >Save your score:</span
                 >
                 <input
@@ -100,7 +102,7 @@
 
         <section id="highScores" class="py-4 hide">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header text-center">
               <p class="h5">High Scores</p>
             </div>
             <div class="card-body text-center">

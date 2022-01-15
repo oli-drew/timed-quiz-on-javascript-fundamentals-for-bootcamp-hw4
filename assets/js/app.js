@@ -110,6 +110,8 @@ const totalQuestions = questions.length - 1;
 let currentScore = 0;
 // Variable to track current question
 let questionNumber = 0;
+// Quiz instructions
+const quizInstructions = document.querySelector("#quizInstructions");
 // Question card
 const questionCard = document.querySelector("#questionCard");
 // Question card footer
@@ -171,6 +173,8 @@ const startQuiz = () => {
   startBtn.disabled = true;
   // Hide start button
   toggleHide(startBtn);
+  // Hide instructions
+  toggleHide(quizInstructions);
   //   Start timer
   countdownTimer(timerStart);
   // Get the first question
@@ -425,8 +429,10 @@ const resetQuiz = () => {
   cardFooter.innerHTML = "";
   // Enable start button
   startBtn.disabled = false;
-  // Hide start button
+  // Show start button
   toggleHide(startBtn);
+  // Show instructions
+  toggleHide(quizInstructions);
   // Reset current score
   currentScore = 0;
   // Reset current question number
