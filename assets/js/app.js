@@ -168,7 +168,6 @@ const countdownTimer = (duration) => {
 
 // Start button clicked function
 const startQuiz = () => {
-  console.log("Start Quiz");
   // Shuffle Questions
   shuffleArr(questions);
   // Disable start button
@@ -215,7 +214,6 @@ const getQuestion = () => {
     // Add event listener to option button
     optionBtn.addEventListener("click", (event) => {
       let userAnswer = event.target.getAttribute("data-answer");
-      console.log(userAnswer);
       checkAnswer(userAnswer);
     });
     // Append button
@@ -235,12 +233,10 @@ const checkAnswer = (answer) => {
 
 // Correct answer = next question
 const correctAnswer = () => {
-  console.log("Correct");
   // Set result to correct!
   fadeResult("Correct!");
   // If question number is less than the total number of questions go to next
   if (questionNumber < totalQuestions) {
-    console.log("Next question");
     // Increment score
     currentScore++;
     // Display current score
@@ -252,7 +248,6 @@ const correctAnswer = () => {
   } else {
     // Add to score for last question
     currentScore++;
-    // console.log(currentScore);
     displayCurrentScore(currentScore);
     // Finish game
     gameOver();
@@ -261,7 +256,6 @@ const correctAnswer = () => {
 
 // Incorrect answer = time subtracted from timer (20s)
 const incorrectAnswer = () => {
-  console.log("Wrong");
   // Set result to wrong!
   fadeResult("Wrong!");
   //   Remove 20 secs from timer
@@ -299,7 +293,6 @@ const displayCurrentScore = (score) => {
 
 // Game finishes when all questions answered or timer = 0
 const gameOver = () => {
-  console.log("Game Over!");
   // Clear timer
   clearInterval(timerInterval);
   // Hide questions
@@ -326,7 +319,6 @@ const submitScore = (e) => {
   const initials = initialsElement.value.toUpperCase();
   // Check input is not blank
   if (initials) {
-    console.log(`${initials} scored: ${currentScore}`);
     // Save the score
     addScore(initials, currentScore);
     // Clear value
@@ -342,7 +334,6 @@ submitScoreBtn.addEventListener("click", submitScore);
 
 // Function to display high scores
 const displayScores = () => {
-  console.log("View scores");
   // Scores as object
   const scores = getScores();
   // Convert to an array so we can iterate and sort
