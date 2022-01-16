@@ -1,23 +1,19 @@
-# timed-quiz-on-javascript-fundamentals-for-bootcamp-hw4
+# Timed quiz on JavaScript fundamentals
 
-Timed quiz on JavaScript fundamentals for Bootcamp homework 4
+## Description
 
-## User Story
+A timed quiz on the fundamentals of JavaScript created as part of a homework assignment. The player has 5 minutes to answer the 10 multiple choice questions. If the player answers the a question incorrectly, 20 seconds is deducted from the timer. The quiz ends either when the player has answered all questions correctly or when the time runs out. At the end of the quiz the player can enter 3 initials to have their score saved to the leader board.
 
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+**Technology stack:**
 
-## Acceptance Criteria
+- HTML, CSS, and JavaScript
+- Bootstrap 5 CSS library
+- Deployed to GitHub Pages
 
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
+## Animated Screenshot
+
+![Preview of the quiz](./assets/images/javascript-quiz.gif)
+
+## Link to deployment
+
+https://oli-drew.github.io/timed-quiz-on-javascript-fundamentals-for-bootcamp-hw4/
