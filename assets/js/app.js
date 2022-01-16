@@ -435,7 +435,7 @@ const resetQuiz = () => {
   timerElement.textContent = "";
   // Question Result element
   const questionResult = document.createElement("span");
-  questionResult.textContent = "Good Luck";
+  questionResult.textContent = "Good Luck!s";
   questionResult.classList.add("lead", "fade-out");
   cardFooter.append(questionResult);
   // Unhide submit form
