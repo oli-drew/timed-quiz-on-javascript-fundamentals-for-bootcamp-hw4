@@ -122,6 +122,8 @@ const questionText = document.querySelector("#questionText");
 const quizEnd = document.querySelector("#quizEnd");
 // Select the score list element
 const scoreList = document.querySelector("#scoreList");
+// Score element
+const currentScoreElement = document.querySelector("#currentScore");
 // Timer - 5 minutes = 300 secs
 const timerStart = 300;
 let timeRemaining;
@@ -282,9 +284,9 @@ const fadeResult = (result) => {
   cardFooter.append(questionResult);
   // Color depending on result
   if (result === "Correct!") {
-    questionResult.classList.add("text-success");
+    questionResult.classList.add("text-success", "lead");
   } else {
-    questionResult.classList.add("text-danger");
+    questionResult.classList.add("text-danger", "lead");
   }
   // Set fade out class
   questionResult.classList.add("fade-out");
@@ -292,7 +294,6 @@ const fadeResult = (result) => {
 
 // Display current score
 const displayCurrentScore = (score) => {
-  const currentScoreElement = document.querySelector("#currentScore");
   currentScoreElement.textContent = `Score: ${score}/${questions.length}`;
 };
 
@@ -433,12 +434,18 @@ const resetQuiz = () => {
   toggleHide(startBtn);
   // Show instructions
   toggleHide(quizInstructions);
+  // Hide score
+  currentScoreElement.textContent = "";
   // Reset current score
   currentScore = 0;
   // Reset current question number
   questionNumber = 0;
   // Clear timer element
   timerElement.textContent = "";
+  // Question Result element
+  const questionResult = document.createElement("span");
+  questionResult.textContent = "Good Luck";
+  questionResult.classList.add("lead", "fade-out");
   // Unhide submit form
   removeHide(submitScoreForm);
   // Hide submit success message
