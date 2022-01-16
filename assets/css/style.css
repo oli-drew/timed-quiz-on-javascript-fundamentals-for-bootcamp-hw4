@@ -1,11 +1,14 @@
+/* For fixed navbar */
 main > .container {
   padding: 60px 15px 0;
 }
 
+/* Class used to hide elements */
 .hide {
   display: none;
 }
 
+/* Fade out the question result over 4 seconds */
 .fade-out {
   animation: fadeOut ease 4s;
   -webkit-animation: fadeOut ease 4s;
