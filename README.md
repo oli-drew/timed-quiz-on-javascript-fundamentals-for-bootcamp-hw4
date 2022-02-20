@@ -17,3 +17,7 @@ A timed quiz on the fundamentals of JavaScript created as part of a homework ass
 ## Link to deployment
 
 https://oli-drew.github.io/timed-quiz-on-javascript-fundamentals-for-bootcamp-hw4/
+
+## License
+
+[MIT License](LICENSE)
