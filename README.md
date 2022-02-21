@@ -21,3 +21,7 @@ https://oli-drew.github.io/timed-quiz-on-javascript-fundamentals-for-bootcamp-hw
 ## License
 
 [MIT License](LICENSE)
+
+## Contact Information
+
+[Email: oli_webdev@protonmail.com](mailto:oli_webdev@protonmail.com)
